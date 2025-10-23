@@ -1,13 +1,15 @@
-package web.controller;
+package web.dao;
 
-import org.springframework.stereotype.Service;
+import web.dao.CarDAO;
+import web.model.Car;
+import org.springframework.stereotype.Repository;
 
 import java.util.Arrays;
 import java.util.List;
 
-@Service
-public class CarService {
-    private List<Car> cars = Arrays.asList(
+@Repository
+public class CarDAOImpl implements CarDAO {
+    private final List<Car> cars = Arrays.asList(
             new Car("Toyota", "Blue", 2000),
             new Car("BMW", "Yellow", 3500),
             new Car("Mercedes", "Red", 4000),
@@ -15,6 +17,7 @@ public class CarService {
             new Car("Ford", "White", 3000)
     );
 
+    @Override
     public List<Car> getCars(int count) {
         if (count >= cars.size()) {
             return cars;
